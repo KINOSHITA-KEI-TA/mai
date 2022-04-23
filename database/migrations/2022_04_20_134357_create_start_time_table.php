@@ -19,7 +19,7 @@ class CreateStartTimeTable extends Migration
             $table->date('today_date')->nullable(true);
             $table->string('site');
             $table->time('Working_time')->nullable(true);
-            $table->time('management')->nullable(true);
+            $table->boolean('management')->default(true);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
