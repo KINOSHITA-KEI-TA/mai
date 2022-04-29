@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStartTimeTable extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateStartTimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('start_time', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->index('user_id');
+            // $table->unsignedBigInteger('user_id')->after('id');
             $table->date('today_date')->nullable(true);
             $table->string('site');
             $table->time('Working_time')->nullable(true);
             $table->boolean('management')->default(true);
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -32,6 +33,10 @@ class CreateStartTimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('start_time');
+        // Schema::create('posts',function (Blueprint $table){
+        //     $table->dropForeign('posts_user_id_foreign');
+        //     $table->dropColumn('user_id');
+        // });
+        Schema::dropIfExists('posts');
     }
 }

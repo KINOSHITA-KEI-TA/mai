@@ -3,11 +3,14 @@
 @endif
 
 <p>名前: {{ Auth::user()->name }}</p>
+<p>名前: {{ Auth::user()->id }}</p>
 <div style="width:50%; margin: 0 auto; text-align:center;">
+
     <form action="{{ route('post.store') }}" method="POST">
+    @csrf
         <div>
             現場名
-            <input name="site" placeholder="現場名"/>
+            <input type="text" name="site" placeholder="現場名"/>
         </div>
         <div>
             日付

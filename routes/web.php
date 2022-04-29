@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('post/create');
 });
-Route::get('/post','App\Http\Controllers\PostController@index');
+// Route::get('/post','App\Http\Controllers\PostController@index');
 Route::get('/sample', 'App\Http\Controllers\SampleController@showPage');
-Route::post('/post','App\Http\Controllers\PostController@store')->name('post.store');
+Route::post('/post',[App\Http\Controllers\PostController::class,'store'])->name('post.store')
+->middleware('auth');
 Route::get('/post',[App\Http\Controllers\PostController::class,'create'])->name('post.create');
 Route::middleware([
     'auth:sanctum',
