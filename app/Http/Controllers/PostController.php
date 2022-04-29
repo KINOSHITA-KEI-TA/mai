@@ -3,12 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Post;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $auth = Auth::user();
+
+        return view('post/create',[ 'auth' => $auth ]);
+        $id = Auth::id();
+        $user = DB::table('users')->find($id);
+        return view('post/create', ['my_user' => $user]);
+    }
     public function create()
     {
-        return view('post/create');
+        if(! Auth::user()) {
+            return view('/login');
+       }
+        return view('post/create',['user' => Auth::id()]);
     }
     public function store(Request $request)
     {

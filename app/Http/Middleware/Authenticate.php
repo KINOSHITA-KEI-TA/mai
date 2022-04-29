@@ -17,5 +17,21 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+        if (! $request->expectsJson()) {
+            $URI = explode("post/create", $request->getRequestUri());
+            switch ($URI[1]){
+                //管理画面が https/xxx.xxx/admin/xxxxxのケース
+                case 'admin':
+                return route('admin_login');
+
+                //管理画面が https/xxx.xxx/shop_admin/xxxxxのケース
+                case 'shop_admin':
+                return route('shop_admin_login');
+
+                //ユーザーマイページが https/xxx.xxx/mypage/xxxxxのケース
+                case 'views/auth':
+                return route('login');
+            }
+        }
     }
 }

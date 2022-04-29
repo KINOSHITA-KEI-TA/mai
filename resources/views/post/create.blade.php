@@ -1,3 +1,8 @@
+@if (Session::has('message'))
+    <p>{{ session('message') }}</p>
+@endif
+
+<p>名前: {{ Auth::user()->name }}</p>
 <div style="width:50%; margin: 0 auto; text-align:center;">
     <form action="{{ route('post.store') }}" method="POST">
         <div>
@@ -10,11 +15,11 @@
         </div>
         <div>
             時間入力
-            <input type="time" class="form-control" name="Working_time">
+            <input type="time" class="form-control" name="Working_time"/>
         </div>
         <div>
-        <button>出勤</button>
-        <button>退勤</button>
+        <button name="management" {{ $management = true }}>出勤</button>
+        <button name="management" {{ $management = false }}>退勤</button>
         </div>
     </form>
 </div>

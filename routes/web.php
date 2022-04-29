@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/post','App\Http\Controllers\PostController@index');
 Route::get('/sample', 'App\Http\Controllers\SampleController@showPage');
-Route::post('/post','PostController@store')->name('post.store');
-Route::get('/post','App\Http\Controllers\PostController@create')->name('post.create');
+Route::post('/post','App\Http\Controllers\PostController@store')->name('post.store');
+Route::get('/post',[App\Http\Controllers\PostController::class,'create'])->name('post.create');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
