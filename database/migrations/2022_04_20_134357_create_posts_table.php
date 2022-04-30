@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             // $table->unsignedBigInteger('user_id')->after('id');
             $table->date('today_date')->nullable(true);
-            $table->string('site');
+            $table->string('site')->nullable(true);
             $table->time('Working_time')->nullable(true);
             $table->boolean('management')->default(true);
             // $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -33,10 +33,10 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        // Schema::create('posts',function (Blueprint $table){
+         Schema::create('posts',function (Blueprint $table){
         //     $table->dropForeign('posts_user_id_foreign');
         //     $table->dropColumn('user_id');
-        // });
+         });
         Schema::dropIfExists('posts');
     }
 }

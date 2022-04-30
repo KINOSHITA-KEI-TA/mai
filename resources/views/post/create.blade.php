@@ -21,8 +21,17 @@
             <input type="time" class="form-control" name="Working_time"/>
         </div>
         <div>
-        <button name="management" {{ $management = true }}>出勤</button>
-        <button name="management" {{ $management = false }}>退勤</button>
+        <button name="management" value="1">出勤</button>
+        <button name="management" value="0">退勤</button>
         </div>
+        <!-- <div>
+        出勤
+        <input type="radio" name="management" value="0">
+        退勤
+        <input type="radio" name="management" value="1">
+        </div>
+        <div>
+        <button>登録</button>
+        </div> -->
     </form>
 </div>

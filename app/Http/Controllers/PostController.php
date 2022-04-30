@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
-use Request;
+use Illuminate\Http\Request;
+// use Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
@@ -11,6 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
+        $posts = Post::all();
         $auth = Auth::user();
 
         return view('post/create',[ 'auth' => $auth ]);
@@ -24,16 +25,22 @@ class PostController extends Controller
             return view('auth/login');
        }
         return view('post/create',['user' => Auth::id()]);
+        
     }
+    // Request $request
     public function store(Request $request)
     {
-        $post = new Post;
+        $post = new Post();
         // $post->user_id = $request->user_id();
         // $post->user_id = Auth::id();
-        $post->site = $request->site();
-        $post->today_date = $request->today_date();
-        $post->Working_time = $request->Working_time();
-        $post->management = $request->management();
+        $post->site = $request->site;
+        $post->today_date = $request->today_date;
+        $post->Working_time = $request->Working_time;
+        $post->management = $request->management;
+        // $post->site = $request->site();
+        // $post->today_date = $request->today_date();
+        // $post->Working_time = $request->Working_time();
+        // $post->management = $request->management();
         $post->save();
         return redirect()->route('post.create');
     }
