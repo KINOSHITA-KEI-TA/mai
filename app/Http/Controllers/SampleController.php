@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class SampleController extends Controller
 {
-    public function showPage()
+    public function index()
     {
        $posts = Post::all();
     }

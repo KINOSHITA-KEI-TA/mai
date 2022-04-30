@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $post = new Post();
         // $post->user_id = $request->user_id();
-        // $post->user_id = Auth::id();
+        $post->user_id = Auth::id();
         $post->site = $request->site;
         $post->today_date = $request->today_date;
         $post->Working_time = $request->Working_time;

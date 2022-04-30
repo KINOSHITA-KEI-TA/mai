@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id')->after('id');
+            $table->unsignedBigInteger('user_id');
             $table->date('today_date')->nullable(true);
             $table->string('site')->nullable(true);
             $table->time('Working_time')->nullable(true);
@@ -33,10 +33,10 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-         Schema::create('posts',function (Blueprint $table){
-        //     $table->dropForeign('posts_user_id_foreign');
-        //     $table->dropColumn('user_id');
-         });
+        //  Schema::create('posts',function (Blueprint $table){
+        // //     $table->dropForeign('posts_user_id_foreign');
+        // //     $table->dropColumn('user_id');
+        //  });
         Schema::dropIfExists('posts');
     }
 }

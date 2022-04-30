@@ -19,6 +19,14 @@ Route::get('/', function () {
 Route::get('/sample', 'App\Http\Controllers\SampleController@showPage');
 Route::post('/post',[App\Http\Controllers\PostController::class,'store'])->name('post.store')
 ->middleware('auth');
+Route::post('/posts',[App\Http\Controllers\PostController::class,'index'])->name('post.index')
+->middleware('auth');
+Route::get('/post/show',[App\Http\Controllers\PostController::class,'show'])->name('post.show')
+->middleware('auth');
+Route::get('/post/edit/{id}',[App\Http\Controllers\PostController::class,'edit'])->name('post.edit')
+->middleware('auth');
+Route::post('/post/edit/{id}',[App\Http\Controllers\PostController::class,'update'])->name('post.update')
+->middleware('auth');
 Route::get('/post',[App\Http\Controllers\PostController::class,'create'])->name('post.create');
 Route::middleware([
     'auth:sanctum',
