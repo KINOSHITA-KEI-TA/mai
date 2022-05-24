@@ -10,5 +10,6 @@ class SampleController extends Controller
     public function index()
     {
        $posts = Post::all();
+       return view('/Sample',['posts' => $posts]);
     }
 }

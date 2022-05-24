@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('today_date')->nullable(true);
             $table->string('site')->nullable(true);
+            $table->string('contractor')->nullable(true);
             $table->time('Working_time')->nullable(true);
             $table->boolean('management')->default(true);
             // $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
