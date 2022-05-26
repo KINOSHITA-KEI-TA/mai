@@ -127,5 +127,8 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes'           => [],
+    'attributes'           => [
+    'site' => '現場名',
+    'contractor' => '元請名',
+    'Working_time' => '時間',],
 ];

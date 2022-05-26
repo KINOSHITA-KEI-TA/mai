@@ -48,6 +48,13 @@ class PostController extends Controller
         // $post->site = $request->site();
         // $post->today_date = $request->today_date();
         // $post->Working_time = $request->Working_time();
+        $request->validate(
+            [
+                'site' =>  'required',
+                'contractor' => 'required',
+                'Working_time' => 'required',
+            ]
+        );
         // $post->management = $request->management();
         $post->save();
         return redirect()->route('post.create');

@@ -37,5 +37,9 @@
         </div>
     </form>
 </div>
+@foreach ($errors->all() as $error)
+    {{ $error }}
+@endforeach
+<!-- {{ $errors->first() }} -->
 <script src="{{ mix('js/create.js') }}"></script>
 
