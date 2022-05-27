@@ -34,6 +34,15 @@ class PostController extends Controller
             // 'posts' => $post, // $userの書いた記事をviewへ渡す
         ]);
     }
+    public function delete(Request $request)
+    {
+        $postId = (int) $request->route('postId');
+        $post = Post::where('id', $postId)->firstOrFail();
+        $post->delete();
+        return redirect()
+            ->route('sample.index')
+            ->with('feedback.success',"投稿を削除しました");
+    }
     
     public function store(Request $request)
     {

@@ -3,6 +3,8 @@
 @endif
 <p>名前: {{ Auth::user()->name }}</p>
 <p>社員番号: {{ Auth::user()->id }}</p>
+<p><a href="/sample">出勤一覧</a></p>
+<p><a href="/dashboard">ダッシュボード</a></p>
 
 <div style="width:50%; margin: 0 auto; text-align:center;">
 

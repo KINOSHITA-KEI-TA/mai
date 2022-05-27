@@ -8,7 +8,11 @@
 </head>
 <body>
 <div>
+@if (session('feedback.success'))
+    <p style="color: green">{{ session('feedback.success')}}</p>
+@endif
 <h2>出退勤</h2>
+<p><a href="/post">出退勤画面</a></p>
 </div>
 <table border="1" style="border-collapse: collapse">
     <tr>
@@ -34,7 +38,18 @@
     @else
         <td>移動日</td>
     @endif
+    @if (Auth::user()->id == $post->user_id)
+    <form action="{{ route('sample.delete',['postId'=> $post->id])
+    }}" method="post">
+        @method('DELETE')
+        @csrf
+        <td><button type="submit">削除</button></td>
+    </form>
+    @else
+        <td></td>
+    @endif
     </tr>
+    
     @endforeach
 </table>
 </body>
