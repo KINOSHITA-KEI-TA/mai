@@ -20,7 +20,7 @@
         </div>
         <div>
             <label>時間入力</label>
-            <input type="time" class="form-control" name="Working_time" id="today_time" value="00:00:00"/>
+            <input type="time" class="form-control" name="Working_time" id="today_time" value="00:00"/>
         </div>
         <span id="today_time"></span>
         <div>

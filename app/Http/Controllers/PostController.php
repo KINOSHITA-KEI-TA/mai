@@ -23,40 +23,15 @@ class PostController extends Controller
     {
         return view('post.create');
     }
-    public function show(Post $post)
-    {
-        $posts = Post::all();
-        $auth = Auth::user();
-        // $user = DB::table('users')->where('id',$user_id)->first();
-        // $user = DB::table('users')->find($id);
-        return view('post.show', [
-            // 'user_name' => $user->name, // $user名をviewへ渡す
-            // 'posts' => $post, // $userの書いた記事をviewへ渡す
-        ]);
-    }
-    public function delete(Request $request)
-    {
-        $postId = (int) $request->route('postId');
-        $post = Post::where('id', $postId)->firstOrFail();
-        $post->delete();
-        return redirect()
-            ->route('sample.index')
-            ->with('feedback.success',"投稿を削除しました");
-    }
-    
     public function store(Request $request)
     {
         $post = new Post();
-        // $post->user_id = $request->user_id();
         $post->user_id = Auth::id();
         $post->site = $request->site;
         $post->contractor = $request->contractor;
         $post->today_date = $request->today_date;
         $post->Working_time = $request->Working_time;
         $post->management = $request->management;
-        // $post->site = $request->site();
-        // $post->today_date = $request->today_date();
-        // $post->Working_time = $request->Working_time();
         $request->validate(
             [
                 'site' =>  'required',

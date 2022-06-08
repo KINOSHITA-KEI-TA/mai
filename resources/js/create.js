@@ -17,6 +17,6 @@
     var now = new Date();
     var nowhour = now.getHours();
     var nowminutes = now.getMinutes();
-    var nowseconds = now.getSeconds();
-    var text = nowhour + ":" + nowminutes + ":" + nowseconds; 
+    // var nowseconds = now.getSeconds() + ":" + nowseconds;
+    var text = nowhour + ":" + nowminutes; 
     document.getElementById("today_time").value = text;

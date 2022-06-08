@@ -14,6 +14,16 @@
 <h2>出退勤</h2>
 <p><a href="/post">出退勤画面</a></p>
 </div>
+<div>
+  <form action="{{route('sample.search') }}", method="POST">
+    @csrf
+        <select id="name-list" name="search" value="">
+            <option value="1">木下啓太</option>
+            <option value="2">田中一郎</option>
+        </select>
+    <input type="submit" value="検索">
+  </form>
+</div>
 <table border="1" style="border-collapse: collapse">
     <tr>
         <th>名前</th>
