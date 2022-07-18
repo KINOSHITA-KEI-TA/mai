@@ -27,7 +27,34 @@ class SampleController extends Controller
     }
     public function search(Request $request)
     {
-        $posts = Post::where('user_id',$request->search)->get();
+        $search = $request->input('search');
+        $year = $request->input('year');
+        $month = $request->input('month');
+        // $query = Post::query();
+        if(!empty($search)) {
+        // $query = Post::where('user_id',$request->search)->get()
+        $posts = Post::where('user_id',$request->search)
+        ->whereYear('today_date',$request->year)
+        ->whereMonth('today_date',$request->month)->get();
+        }
+        // if(!empty($year)) {
+        // // $posts = Post::whereYear('today_date','yyyy', 'LIKE', "%{$year}%")->get();
+        // $query = Post::whereYear('today_date',$request->year)->get();
+        // // $query->whereYear('today','yyyy', 'LIKE', "%{$year}%");
+        // // $posts = Post::where('today',$request->year)->get();
+        // }
+        // if(!empty($month)) {
+        // // $posts = Post::whereMonth('today_date','mm', 'LIKE', "%{$month}%")->get();
+        // $query = Post::whereMonth('today_date',$request->month)->get();
+        // // $query->whereMonth('today','mm', 'LIKE', "%{$month}%");
+        // }
+
+        // $posts = $query->get();
+        // DB::table(テーブル名)->whereYear(カラム名, 'yyyy')->get();
+        // User::whereDate('created_at', '2019-05-01')->get();
+        // $posts = POST::table('post')
+        //         ->whereMonth('today_date', '6')
+        //         ->get();
         return view('/sample',['posts' => $posts]);
         
     }

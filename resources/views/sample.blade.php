@@ -13,6 +13,7 @@
 @endif
 <h2>出退勤</h2>
 <p><a href="/post">出退勤画面</a></p>
+<p><a href="/sample">一覧表示</a></p>
 </div>
 <div>
   <form action="{{route('sample.search') }}", method="POST">
@@ -20,6 +21,26 @@
         <select id="name-list" name="search" value="">
             <option value="1">木下啓太</option>
             <option value="2">田中一郎</option>
+        </select>
+        <select id="year-list" name="year" value="">
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+        </select>
+        <select id="name-list" name="month" value="">
+            <option value="01">1月</option>
+            <option value="02">2月</option>
+            <option value="03">3月</option>
+            <option value="04">4月</option>
+            <option value="05">5月</option>
+            <option value="06">6月</option>
+            <option value="07">7月</option>
+            <option value="08">8月</option>
+            <option value="09">9月</option>
+            <option value="10">10月</option>
+            <option value="11">11月</option>
+            <option value="12">12月</option>
         </select>
     <input type="submit" value="検索">
   </form>
